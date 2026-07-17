@@ -12,9 +12,7 @@ interface TextToSpeechProps {
   sourceText?: string
 }
 
-export default function TextToSpeech({
-  sourceText
-}: TextToSpeechProps) {
+export default function TextToSpeech({ sourceText }: TextToSpeechProps) {
   const [text, setText] = useState('')
   const {
     audioUrl,
@@ -64,7 +62,8 @@ export default function TextToSpeech({
             Text to Speech
           </h2>
           <p className='text-muted-foreground mt-2 max-w-2xl text-sm leading-6'>
-            Turn English text or your latest transcription into downloadable speech without sending the text to an application server.
+            Turn English text or your latest transcription into downloadable
+            speech without sending the text to an application server.
           </p>
         </div>
 

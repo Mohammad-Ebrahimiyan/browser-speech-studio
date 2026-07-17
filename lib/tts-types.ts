@@ -3,8 +3,7 @@ export const TTS_MAX_TEXT_LENGTH = 2000
 export const TTS_OUTPUT_MIME_TYPE = 'audio/mpeg' as const
 
 export type TtsWorkerRequest =
-  | { type: 'load' }
-  | { type: 'generate'; text: string }
+  { type: 'load' } | { type: 'generate'; text: string }
 
 export type TtsWorkerResponse =
   | { status: 'loading'; progress: number }

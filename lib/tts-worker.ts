@@ -19,9 +19,7 @@ type TextToSpeechOutput = {
   sampling_rate: number
 }
 
-type TextToSpeechPipeline = (
-  text: string
-) => Promise<TextToSpeechOutput>
+type TextToSpeechPipeline = (text: string) => Promise<TextToSpeechOutput>
 
 type ModelProgress = {
   progress?: number
@@ -54,9 +52,7 @@ function clampProgress(progress: unknown): number {
   return Math.min(100, Math.max(0, progress))
 }
 
-function isTextToSpeechOutput(
-  output: unknown
-): output is TextToSpeechOutput {
+function isTextToSpeechOutput(output: unknown): output is TextToSpeechOutput {
   if (typeof output !== 'object' || output === null) {
     return false
   }
@@ -104,18 +100,13 @@ function float32ToInt16(audio: Float32Array): Int16Array {
 
   for (let index = 0; index < audio.length; index += 1) {
     const sample = Math.max(-1, Math.min(1, audio[index]))
-    samples[index] = Math.round(
-      sample < 0 ? sample * 32768 : sample * 32767
-    )
+    samples[index] = Math.round(sample < 0 ? sample * 32768 : sample * 32767)
   }
 
   return samples
 }
 
-function pushEncodedChunk(
-  chunks: Uint8Array[],
-  chunk: Uint8Array
-): void {
+function pushEncodedChunk(chunks: Uint8Array[], chunk: Uint8Array): void {
   if (chunk.length > 0) {
     chunks.push(Uint8Array.from(chunk))
   }
@@ -137,16 +128,9 @@ function mergeChunks(chunks: Uint8Array[]): ArrayBuffer {
   return result.buffer
 }
 
-function encodeMp3(
-  audio: Float32Array,
-  samplingRate: number
-): ArrayBuffer {
+function encodeMp3(audio: Float32Array, samplingRate: number): ArrayBuffer {
   const samples = float32ToInt16(audio)
-  const encoder = new lame.Mp3Encoder(
-    MP3_CHANNELS,
-    samplingRate,
-    MP3_BIT_RATE
-  )
+  const encoder = new lame.Mp3Encoder(MP3_CHANNELS, samplingRate, MP3_BIT_RATE)
   const chunks: Uint8Array[] = []
 
   for (

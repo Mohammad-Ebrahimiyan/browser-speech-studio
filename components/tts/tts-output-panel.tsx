@@ -60,21 +60,22 @@ export default function TtsOutputPanel({
                   <span>Loading TTS model</span>
                   <span>{modelLoadingProgress.toFixed()}%</span>
                 </div>
-                <Progress
-                  className='mt-3'
-                  value={modelLoadingProgress}
-                />
+                <Progress className='mt-3' value={modelLoadingProgress} />
               </div>
             </div>
             <p className='text-muted-foreground mt-4 text-xs leading-5'>
-              The first visit takes longer. The browser can reuse cached model files later.
+              The first visit takes longer. The browser can reuse cached model
+              files later.
             </p>
           </div>
         </div>
       )}
 
       {isGenerating && (
-        <div className='my-auto flex flex-col items-center justify-center py-12 text-center' role='status'>
+        <div
+          className='my-auto flex flex-col items-center justify-center py-12 text-center'
+          role='status'
+        >
           <div className='bg-primary/10 relative flex size-20 items-center justify-center rounded-full'>
             <div className='border-primary/30 absolute inset-0 animate-ping rounded-full border' />
             <AudioLines className='text-primary size-9 animate-pulse' />
@@ -87,7 +88,10 @@ export default function TtsOutputPanel({
       )}
 
       {error && !isGenerating && (
-        <div className='border-destructive/25 bg-destructive/10 text-destructive my-auto flex gap-3 rounded-2xl border p-4' role='alert'>
+        <div
+          className='border-destructive/25 bg-destructive/10 text-destructive my-auto flex gap-3 rounded-2xl border p-4'
+          role='alert'
+        >
           <CircleAlert className='mt-0.5 size-5 shrink-0' />
           <div>
             <p className='font-medium'>Audio generation failed</p>
@@ -101,7 +105,9 @@ export default function TtsOutputPanel({
           <div className='bg-muted flex size-20 items-center justify-center rounded-full border'>
             <AudioLines className='size-9 opacity-60' />
           </div>
-          <h4 className='text-foreground mt-6 font-semibold'>Ready when you are</h4>
+          <h4 className='text-foreground mt-6 font-semibold'>
+            Ready when you are
+          </h4>
           <p className='mt-2 max-w-xs text-sm leading-6'>
             Add English text, then select Generate speech to create an MP3.
           </p>

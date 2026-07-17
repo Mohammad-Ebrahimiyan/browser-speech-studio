@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <main className='min-h-screen'>
-      <section className='border-b bg-linear-to-b from-zinc-50 to-background py-16 dark:from-zinc-950 sm:py-20'>
+      <section className='to-background border-b bg-linear-to-b from-zinc-50 py-16 sm:py-20 dark:from-zinc-950'>
         <div className='container max-w-7xl'>
           <div className='grid gap-8 lg:grid-cols-[1fr_420px] lg:items-end'>
             <div>
@@ -31,7 +31,8 @@ export default function Home() {
                 Transcribe audio. Generate speech.
               </h1>
               <p className='text-muted-foreground mt-5 max-w-2xl text-base leading-7 sm:text-lg'>
-                A private browser-based workspace for English speech-to-text and text-to-speech.
+                A private browser-based workspace for English speech-to-text and
+                text-to-speech.
               </p>
             </div>
 

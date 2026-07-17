@@ -39,9 +39,7 @@ export function useTextToSpeech(): TextToSpeechState {
 
     workerRef.current = worker
 
-    const handleMessage = (
-      event: MessageEvent<TtsWorkerResponse>
-    ): void => {
+    const handleMessage = (event: MessageEvent<TtsWorkerResponse>): void => {
       const message = event.data
 
       switch (message.status) {

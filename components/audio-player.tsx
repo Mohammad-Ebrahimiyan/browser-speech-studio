@@ -7,10 +7,7 @@ interface AudioPlayerProps {
   mimeType: string
 }
 
-export default function AudioPlayer({
-  audioUrl,
-  mimeType
-}: AudioPlayerProps) {
+export default function AudioPlayer({ audioUrl, mimeType }: AudioPlayerProps) {
   const playerRef = useRef<HTMLAudioElement>(null)
 
   useEffect(() => {
