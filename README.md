@@ -4,6 +4,10 @@ A privacy-friendly, browser-based speech workspace built with Next.js. Transcrib
 
 > Speech-to-text and text-to-speech inference run in Web Workers with Transformers.js and ONNX Runtime Web. Model files are downloaded by the browser on first use and may be reused from the browser cache.
 
+## Live Demo
+
+[https://browser-speech-studio.vercel.app/](https://browser-speech-studio.vercel.app/)
+
 ## Features
 
 - English speech-to-text with `Xenova/whisper-tiny.en`
@@ -16,12 +20,6 @@ A privacy-friendly, browser-based speech workspace built with Next.js. Transcrib
 - Responsive interface built with Tailwind CSS and shadcn/ui
 - No application API key or inference server required
 - Compatible with Vercel deployment
-
-## Demo
-
-Live demo: `https://YOUR_VERCEL_PROJECT.vercel.app`
-
-Replace the URL above after your first Vercel deployment.
 
 ## Screenshots
 
@@ -66,7 +64,7 @@ React UI
 
 ## Technology Stack
 
-- Next.js 15 with App Router
+- Next.js with App Router
 - React 19
 - TypeScript
 - Tailwind CSS 4
@@ -90,7 +88,7 @@ React UI
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/browser-speech-studio.git
+git clone https://github.com/Mohammad-Ebrahimiyan/browser-speech-studio.git
 cd browser-speech-studio
 ```
 
@@ -141,123 +139,18 @@ npm run start
 4. Preview the result in the audio player.
 5. Select **Download MP3** to save the file.
 
-## Deployment on Vercel
-
-This project does not require a server-side inference API or environment variables. AI inference and MP3 encoding happen in the user's browser.
-
-### Deploy from GitHub
-
-1. Push this repository to GitHub.
-2. Sign in to [Vercel](https://vercel.com/) with GitHub.
-3. Select **Add New Project**.
-4. Import the `browser-speech-studio` repository.
-5. Keep the detected framework as **Next.js**.
-6. Keep the repository root as the Root Directory.
-7. Use `npm install` as the Install Command, or leave the detected default.
-8. Use `npm run build` as the Build Command, or leave the detected default.
-9. Do not set an Output Directory.
-10. No environment variables are required.
-11. Select **Deploy**.
-
-Every push to the production branch can trigger a production deployment, while other branches and pull requests can receive preview deployments.
-
-### Deploy with the Vercel CLI
-
-```bash
-npm install --global vercel
-vercel
-```
-
-For a production deployment:
-
-```bash
-vercel --prod
-```
-
-## Vercel Configuration
-
-A `vercel.json` file is not required. Vercel detects Next.js automatically.
-
-Recommended project settings:
-
-```text
-Framework Preset: Next.js
-Root Directory: ./
-Install Command: npm install
-Build Command: npm run build
-Output Directory: leave empty
-Node.js Version: 20.x or newer supported version
-Environment Variables: none
-```
-
 ## Important Browser Notes
 
 - The first visit can take longer because the browser must download the model files.
 - Model loading and inference speed depend on the user's CPU, memory, browser, and network.
 - ONNX Runtime may print harmless graph-optimization warnings while loading a model.
 - A missing `Content-Length` response header can cause Transformers.js to expand its download buffer dynamically; this does not necessarily indicate a failed download.
-- Recording requires a secure context. Production Vercel deployments use HTTPS, while browsers also allow microphone access on `localhost` during development.
+- Recording requires a secure context. The live Vercel deployment uses HTTPS, while browsers also allow microphone access on `localhost` during development.
 - The application currently supports English STT and English TTS.
 
 ## Privacy
 
 Audio processing, transcription, speech synthesis, and MP3 encoding run in the browser. The application does not send the user's text or decoded audio to a custom application backend. The browser still downloads model assets from Hugging Face during model loading.
-
-## Model and License Notice
-
-The source code in this repository can be distributed under the MIT License included in `LICENSE`.
-
-The AI models are separate works and remain subject to their own licenses:
-
-- `Xenova/whisper-tiny.en`: see its Hugging Face model page and upstream model license.
-- `Xenova/mms-tts-eng`: an ONNX-compatible conversion of Meta's MMS English TTS checkpoint.
-- Meta MMS TTS is published under `CC-BY-NC-4.0`, which restricts commercial use.
-
-Review every model license before using this application commercially. The repository's MIT License does not replace or override model licenses.
-
-## Repository Hygiene
-
-Do not commit the following generated or local files:
-
-- `.next/`
-- `node_modules/`
-- local environment files such as `.env.local`
-- build output
-- editor and operating-system metadata
-
-The included `.gitignore` covers these paths.
-
-## Security
-
-- Do not commit API tokens or private keys.
-- This version does not require a Hugging Face token.
-- Enable Dependabot alerts, secret scanning, and push protection in the GitHub repository settings when available.
-- Report security issues privately instead of opening a public issue with sensitive details.
-
-## Roadmap
-
-- Optional additional English voices
-- Optional multilingual TTS models with compatible browser-ready ONNX weights
-- Cancellation for long-running generation
-- Audio-history management
-- Automated browser tests
-- GitHub Actions for lint, type-checking, and production builds
-
-## Contributing
-
-Contributions are welcome.
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Make focused changes.
-4. Run lint, type-checking, and a production build.
-5. Open a pull request with a clear description.
-
-```bash
-npm run lint
-npm run typecheck
-npm run build
-```
 
 ## Acknowledgements
 
@@ -266,7 +159,3 @@ npm run build
 - [Xenova MMS TTS English](https://huggingface.co/Xenova/mms-tts-eng)
 - [Next.js](https://nextjs.org/)
 - [Vercel](https://vercel.com/)
-
-## License
-
-The application source code is available under the MIT License. Model files and third-party packages are governed by their respective licenses.
